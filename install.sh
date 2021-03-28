@@ -6,5 +6,10 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 #Install Zsh Syntax Highlighting
 cd ~
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+#Install Zsh Autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 #Load my .zshrc
 wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshrc
+#Depencies you must yourself install
+echo "Install:\nNeofetch"
+
