@@ -11,5 +11,5 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 #Load my .zshrc
 wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshrc
 #Depencies you must yourself install
-echo "Install:\nNeofetch"
+echo "Install:\nNeofetch\nfzf"
 
