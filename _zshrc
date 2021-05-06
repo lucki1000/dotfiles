@@ -127,4 +127,12 @@ bindkey '^R' znt-history-widget
 setopt AUTO_PUSHD HIST_IGNORE_DUPS PUSHD_IGNORE_DUPS
 zstyle ':completion::complete:n-kill::bits' matcher 'r:|=** l:|=*'
 alias mkcd='{ IFS= read -r d && mkdir "$d" && cd "$d"; } <<<'
+### git-upload <files> "MESSAGE"
+### git-upload "*" "Test Commit"
+git-upload () {
+        git add $1
+        git commit -m $2
+        git push -u origin main
+}
+###
 ### END ###
