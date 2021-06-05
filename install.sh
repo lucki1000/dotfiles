@@ -16,18 +16,19 @@ do
 done
 
 install_deps () {
+    echo ":: Install Depencies ::"
     if [[ sys_installer == "pacman" ]]
     then 
-        sudo pacman -Sy curl git zsh neofetch fzf --noconfirm
+        sudo pacman -Sy curl git zsh neofetch fzf --noconfirm 2>&1
     elif [[ sys_installer == "apt" ]]
     then 
-        sudo apt update && sudo apt install curl git zsh neofetch fzf -y
+        sudo apt update && sudo apt install curl git zsh neofetch fzf -y 2>&1
     elif [[ sys_installer == "yum" ]]
     then
-        sudo yum -y install curl zsh git neofetch fzf
+        sudo yum -y install curl zsh git neofetch fzf 2>&1
     elif [[ sys_installer == "zypper" ]]
     then
-        sudo zypper --non-interactive in curl git zsh neofetch fzf
+        sudo zypper --non-interactive in curl git zsh neofetch fzf 2>&1
     fi
 }
 
@@ -35,17 +36,21 @@ install_deps () {
 install_deps
 
 #OhMyZsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo ":: Install OhMyZsh ::"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 2>&1
 #Install Powerline 10K
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+echo ":: Install Powerline 10K ::"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 2>&1
 #Install Zsh Syntax Highlighting
-cd ~
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo ":: Install Zsh Syntax Highlighting ::"
+cd ~ 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 2>&1
 #Install Zsh Autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo ":: Install Zsh Autosuggest ::"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 2>&1
 #Load my .zshrc
-wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshrc
-#Depencies you must yourself install
-echo "Install:\nNeofetch\nfzf"
+echo ":: load .zshrc ::"
+wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshrc 2>&1
 #Set P10K theme
-wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p10k.zsh
+echo ":: load p10k settings ::"
+wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p10k.zsh 2>&1
