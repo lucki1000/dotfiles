@@ -1,4 +1,39 @@
 #!/bin/bash
+
+declare -A osInfo;
+osInfo[/etc/redhat-release]=yum
+osInfo[/etc/arch-release]=pacman
+osInfo[/etc/gentoo-release]=emerge
+osInfo[/etc/SuSE-release]=zypper
+osInfo[/etc/debian_version]=apt
+
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        echo Package manager: ${osInfo[$f]}
+        sys_installer=${osInfo[$f]}
+    fi
+done
+
+install_deps () {
+    if [[ sys_installer == "pacman" ]]
+    then 
+        sudo pacman -Sy curl git zsh --noconfirm
+    elif [[ sys_installer == "apt" ]]
+    then 
+        sudo apt update && sudo apt upgrade -y
+    elif [[ sys_installer == "yum" ]]
+    then
+        sudo yum -y install curl zsh git 
+    elif [[ sys_installer == "zypper" ]]
+    then
+        sudo zypper --non-interactive in curl git zsh
+    fi
+}
+
+#Install dependencies
+install_deps
+
 #OhMyZsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 #Install Powerline 10K
