@@ -19,16 +19,16 @@ install_deps () {
     echo ":: Install Depencies ::"
     if [[ sys_installer == "pacman" ]]
     then 
-        sudo pacman -Sy curl git zsh neofetch fzf --noconfirm 2>&1
+        sudo pacman -Sy curl git zsh neofetch fzf --noconfirm &>/dev/null
     elif [[ sys_installer == "apt" ]]
     then 
-        sudo apt update && sudo apt install curl git zsh neofetch fzf -y 2>&1
+        sudo apt update && sudo apt install curl git zsh neofetch fzf -y &>/dev/null
     elif [[ sys_installer == "yum" ]]
     then
-        sudo yum -y install curl zsh git neofetch fzf 2>&1
+        sudo yum -y install curl zsh git neofetch fzf &>/dev/null
     elif [[ sys_installer == "zypper" ]]
     then
-        sudo zypper --non-interactive in curl git zsh neofetch fzf 2>&1
+        sudo zypper --non-interactive in curl git zsh neofetch fzf &>/dev/null
     fi
 }
 
@@ -37,20 +37,20 @@ install_deps
 
 #OhMyZsh
 echo ":: Install OhMyZsh ::"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 2>&1
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
 #Install Powerline 10K
 echo ":: Install Powerline 10K ::"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k 2>&1
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k &>/dev/null
 #Install Zsh Syntax Highlighting
 echo ":: Install Zsh Syntax Highlighting ::"
 cd ~ 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git 2>&1
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &>/dev/null
 #Install Zsh Autosuggestions
 echo ":: Install Zsh Autosuggest ::"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 2>&1
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &>/dev/null
 #Load my .zshrc
 echo ":: load .zshrc ::"
-wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshrc 2>&1
+wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshrc &>/dev/null
 #Set P10K theme
 echo ":: load p10k settings ::"
-wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p10k.zsh 2>&1
+wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p10k.zsh &>/dev/null
