@@ -16,7 +16,7 @@ do
 done
 
 install_deps () {
-    echo ":: Install Depencies               ::"
+    echo ":: Install dependencies        ::"
     if [[ sys_installer == "pacman" ]]
     then 
         sudo pacman -Sy curl git zsh neofetch fzf --noconfirm &>/dev/null
@@ -30,6 +30,7 @@ install_deps () {
     then
         sudo zypper --non-interactive in curl git zsh neofetch fzf &>/dev/null
     fi
+    echo ":: Finished installation of dependencies ::"
 }
 
 #Install dependencies
