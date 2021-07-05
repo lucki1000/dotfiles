@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+echo ":: Starting installation of ZSH              ::"
 declare -A osInfo;
 osInfo[/etc/redhat-release]=yum
 osInfo[/etc/arch-release]=pacman
@@ -10,13 +11,13 @@ osInfo[/etc/debian_version]=apt
 for f in ${!osInfo[@]}
 do
     if [[ -f $f ]];then
-        echo ":: Package manager: ${osInfo[$f]}    ::"
+        echo ":: Package manager: ${osInfo[$f]}        ::"
         sys_installer=${osInfo[$f]}
     fi
 done
 
 install_deps () {
-    echo ":: Install dependencies                  ::"
+    echo ":: Install dependencies                      ::"
     if [[ sys_installer == "pacman" ]]
     then 
         sudo pacman -Sy curl git zsh neofetch fzf --noconfirm &>/dev/null
@@ -30,7 +31,7 @@ install_deps () {
     then
         sudo zypper --non-interactive in curl git zsh neofetch fzf &>/dev/null
     fi
-    echo ":: Dependencies are installed            ::"
+    echo ":: Dependencies are installed                ::"
 }
 
 #Install dependencies
