@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 declare -A osInfo;
 osInfo[/etc/redhat-release]=yum
 osInfo[/etc/arch-release]=pacman
@@ -10,7 +10,7 @@ osInfo[/etc/debian_version]=apt
 for f in ${!osInfo[@]}
 do
     if [[ -f $f ]];then
-        echo Package manager: ${osInfo[$f]}
+        echo ":: Package manager: ${osInfo[$f]}    ::"
         sys_installer=${osInfo[$f]}
     fi
 done
