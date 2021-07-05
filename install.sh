@@ -56,4 +56,6 @@ wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshr
 #Set P10K theme
 echo ":: load p10k settings                        ::"
 wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p10k.zsh &>/dev/null
+echo ":: Set ZSH as default SHELL                  ::"
+chsh -s $(which zsh)
 echo ":: Finished                                  ::"
