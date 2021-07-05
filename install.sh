@@ -11,7 +11,7 @@ osInfo[/etc/debian_version]=apt
 for f in ${!osInfo[@]}
 do
     if [[ -f $f ]];then
-        echo ":: Package manager: ${osInfo[$f]}        ::"
+        echo ":: Package manager: ${osInfo[$f]}            ::"
         sys_installer=${osInfo[$f]}
     fi
 done
@@ -37,6 +37,8 @@ install_deps () {
 #Install dependencies
 install_deps
 
+#Path to ZSH
+zshell_path=${which zsh}
 #OhMyZsh
 echo ":: Install OhMyZsh                           ::"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
