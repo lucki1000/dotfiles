@@ -18,16 +18,16 @@ done
 
 install_deps () {
     echo ":: Install dependencies                      ::"
-    if [[ sys_installer == "pacman" ]]
+    if [[ $sys_installer == "pacman" ]]
     then 
         sudo pacman -Sy curl git zsh neofetch fzf --noconfirm &>/dev/null
-    elif [[ sys_installer == "apt" ]]
+    elif [[ $sys_installer == "apt" ]]
     then 
         sudo apt update && sudo apt install curl git zsh neofetch fzf -y &>/dev/null
-    elif [[ sys_installer == "yum" ]]
+    elif [[ $sys_installer == "yum" ]]
     then
         sudo yum -y install curl zsh git neofetch fzf &>/dev/null
-    elif [[ sys_installer == "zypper" ]]
+    elif [[ $sys_installer == "zypper" ]]
     then
         sudo zypper --non-interactive in curl git zsh neofetch fzf &>/dev/null
     fi
