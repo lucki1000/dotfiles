@@ -17,7 +17,6 @@ do
 done
 
 install_deps () {
-    echo ":: Install dependencies                      ::"
     if [[ $sys_installer == "pacman" ]]
     then 
         sudo pacman -Sy curl git zsh neofetch fzf --noconfirm
@@ -33,11 +32,12 @@ install_deps () {
     else
         exit
     fi
-    echo ":: Dependencies are installed                ::"
 } > /dev/null 2>&1
 
 #Install dependencies
+echo ":: Install dependencies                      ::"
 install_deps
+echo ":: Dependencies are installed                ::"
 
 #Path to ZSH
 #zshell_path=$(which zsh)
