@@ -19,16 +19,16 @@ done
 install_deps () {
     if [[ $sys_installer == "pacman" ]]
     then 
-        sudo pacman -Sy curl git zsh neofetch fzf --noconfirm
+        sudo pacman -Sy curl git zsh neofetch fzf shellcheck --noconfirm
     elif [[ $sys_installer == "apt" ]]
     then 
-        sudo apt update && sudo apt install curl git zsh neofetch fzf -y
+        sudo apt update && sudo apt install curl git zsh neofetch shellcheck fzf -y
     elif [[ $sys_installer == "yum" ]]
     then
-        sudo yum -y install curl zsh git neofetch fzf
+        sudo yum -y install curl zsh git neofetch ShellCheck fzf
     elif [[ $sys_installer == "zypper" ]]
     then
-        sudo zypper --non-interactive in curl git zsh neofetch fzf
+        sudo zypper --non-interactive in curl git zsh ShellCheck neofetch fzf
     else
         exit
     fi
@@ -40,7 +40,7 @@ install_deps
 echo -e "\e[31m::\e[0m Dependencies are installed                \e[31m::\e[0m"
 
 #Path to ZSH
-#zshell_path=$(which zsh)
+#zshell_path="$(which zsh)"
 #OhMyZsh
 echo -e "\e[31m::\e[0m Install OhMyZsh                           \e[31m::\e[0m"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &>/dev/null
@@ -63,4 +63,9 @@ wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p
 echo -e "\e[31m::\e[0m Set ZSH as default SHELL                  \e[31m::\e[0m"
 echo -e "\e[31m::\e[0m Enter your password:                      \e[31m::\e[0m"
 chsh -s $(which zsh)
+#Install Vundle
+echo -e "\e[31m::\e[Install Vim Packagemanagement                \e[31m::\e[0m"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall &> /dev/null
+wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc
 echo -e "\e[31m::\e[0m Finished                                  \e[31m::\e[0m"
