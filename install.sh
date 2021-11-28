@@ -64,8 +64,8 @@ echo -e "\e[31m::\e[0m Set ZSH as default SHELL                  \e[31m::\e[0m"
 echo -e "\e[31m::\e[0m Enter your password:                      \e[31m::\e[0m"
 chsh -s $(which zsh)
 #Install Vundle
-echo -e "\e[31m::\e[Install Vim Packagemanagement                \e[31m::\e[0m"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall &> /dev/null
-wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc
+echo -e "\e[31m::\e[0m Install Vim Packagemanagement                \e[31m::\e[0m"
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &>/dev/null
+wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc &>/dev/null
+vim +PluginInstall +qall &> /dev/null 
 echo -e "\e[31m::\e[0m Finished                                  \e[31m::\e[0m"
