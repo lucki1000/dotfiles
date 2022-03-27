@@ -79,7 +79,7 @@ neofetch
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions extract zsh_reload command-not-found zsh-interactive-cd sudo systemadmin alias-finder)
+plugins=(zsh-autosuggestions extract command-not-found zsh-interactive-cd sudo systemadmin alias-finder)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,7 +127,7 @@ bindkey '^R' znt-history-widget
 setopt AUTO_PUSHD HIST_IGNORE_DUPS PUSHD_IGNORE_DUPS
 zstyle ':completion::complete:n-kill::bits' matcher 'r:|=** l:|=*'
 alias mkcd='{ IFS= read -r d && mkdir "$d" && cd "$d"; } <<<'
-alias reload=src
+alias reload='exec zsh'
 alias df=duf 
 alias sudo='sudo -E'
 ### git-upload <files> "MESSAGE"
