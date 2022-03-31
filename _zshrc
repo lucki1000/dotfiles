@@ -129,7 +129,7 @@ zstyle ':completion::complete:n-kill::bits' matcher 'r:|=** l:|=*'
 alias mkcd='{ IFS= read -r d && mkdir "$d" && cd "$d"; } <<<'
 alias reload='exec zsh'
 alias df=duf 
-alias sudo='sudo -E'
+alias sudoe='sudo -E'
 ### git-upload <files> "MESSAGE"
 ### git-upload "*" "Test Commit"
 git-upload () {
