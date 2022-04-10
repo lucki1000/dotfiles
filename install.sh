@@ -22,7 +22,7 @@ install_deps () {
         sudo pacman -Sy curl git zsh neofetch fzf shellcheck duf vim --noconfirm
     elif [[ $sys_installer == "apt" ]]
     then 
-        sudo apt update && sudo apt install curl git zsh neofetch shellcheck fzf duf vim -y
+        sudo apt update && sudo apt install curl git zsh neofetch shellcheck fzf vim -y
     elif [[ $sys_installer == "yum" ]]
     then
         sudo yum -y install curl zsh git neofetch ShellCheck fzf duf vim
