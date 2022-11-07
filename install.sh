@@ -81,10 +81,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &
 wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc &>/dev/null
 #install Vim Plugins
 echo -e "\e[31m::\e[0m Install Vim Plugins                       \e[31m::\e[0m"
-<<<<<<< HEAD
 setup_vim
 echo -e "\e[31m::\e[0m Finished                                  \e[31m::\e[0m"
-=======
 vim +PluginInstall +qall &> /dev/null 
 echo -e "\e[31m::\e[0m Finished                                  \e[31m::\e[0m"
->>>>>>> refs/remotes/origin/main
