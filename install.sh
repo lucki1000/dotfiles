@@ -34,6 +34,19 @@ install_deps () {
     fi
 } > /dev/null 2>&1
 
+setup_vim () {
+    export vimver="$(ls /usr/share/vim/ |grep 'vim[0-9][0-9]')"
+    sudo wget https://raw.githubusercontent.com/romainl/Apprentice/master/colors/apprentice.vim -O /usr/share/vim/"$vimver"/colors/apprentice.vim #Color Theme
+    if [[ $sys_installer == "pacman" ]]
+    then 
+        echo "color apprentice" | sudo tee -a /etc/vimrc
+    elif [[ $sys_installer == "apt" ]]
+    then 
+        echo "color apprentice" | sudo tee -a /etc/vim/vimrc
+    fi
+    vim +PluginInstall +qall
+} > /dev/null 2>&1 
+
 #Install dependencies
 echo -e "\e[31m::\e[0m Install dependencies                      \e[31m::\e[0m"
 install_deps
@@ -68,5 +81,5 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &
 wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc &>/dev/null
 #install Vim Plugins
 echo -e "\e[31m::\e[0m Install Vim Plugins                       \e[31m::\e[0m"
-vim +PluginInstall +qall &> /dev/null 
+setup_vim
 echo -e "\e[31m::\e[0m Finished                                  \e[31m::\e[0m"
