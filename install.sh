@@ -8,6 +8,11 @@ osInfo[/etc/gentoo-release]=emerge
 osInfo[/etc/SuSE-release]=zypper
 osInfo[/etc/debian_version]=apt
 
+apt_packages="curl git zsh neofetch shellcheck fzf vim"
+pacman_packages="curl git zsh neofetch fzf shellcheck duf vim"
+yum_packages="curl zsh git neofetch ShellCheck fzf duf vim"
+zypper_packages="curl git zsh ShellCheck neofetch fzf duf vim"
+
 for f in ${!osInfo[@]}
 do
     if [[ -f $f ]];then
@@ -19,16 +24,16 @@ done
 install_deps () {
     if [[ $sys_installer == "pacman" ]]
     then 
-        sudo pacman -Sy curl git zsh neofetch fzf shellcheck duf vim --noconfirm
+        sudo pacman -Sy $pacman_packages --noconfirm
     elif [[ $sys_installer == "apt" ]]
     then 
-        sudo apt update && sudo apt install curl git zsh neofetch shellcheck fzf vim -y
+        sudo apt update && sudo apt install $apt_packages -y
     elif [[ $sys_installer == "yum" ]]
     then
-        sudo yum -y install curl zsh git neofetch ShellCheck fzf duf vim
+        sudo yum -y install $yum_packages
     elif [[ $sys_installer == "zypper" ]]
     then
-        sudo zypper --non-interactive in curl git zsh ShellCheck neofetch fzf duf vim
+        sudo zypper --non-interactive in $zypper_packages
     else
         exit
     fi
