@@ -79,6 +79,7 @@ wget -O ~/.zshrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/_zshr
 echo -e "\e[31m::\e[0m load p10k settings                        \e[31m::\e[0m"
 wget -O ~/.p10k.zsh https://raw.githubusercontent.com/lucki1000/dotfiles/main/_p10k.zsh &>/dev/null
 echo -e "\e[31m::\e[0m Set ZSH as default SHELL                  \e[31m::\e[0m"
+sed -i 's/lukas/$USER/g' .zshrc
 sudo chsh -s $(which zsh) $USER
 #Install Vundle
 echo -e "\e[31m::\e[0m Install Vim and get Vim configuration     \e[31m::\e[0m"
