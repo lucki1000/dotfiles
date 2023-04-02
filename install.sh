@@ -49,7 +49,7 @@ setup_vim () {
     then 
         echo "color apprentice" | sudo tee -a /etc/vim/vimrc
     fi
-    vim +PluginInstall +qall
+    #vim +PluginInstall +qall
 } > /dev/null 2>&1 
 
 #Install dependencies
@@ -83,7 +83,7 @@ sed -i 's/lukas/$USER/g' .zshrc
 sudo chsh -s $(which zsh) $USER
 #Install Vundle
 echo -e "\e[31m::\e[0m Install Vim and get Vim configuration     \e[31m::\e[0m"
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &>/dev/null
+#git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &>/dev/null
 wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc &>/dev/null
 #install Vim Plugins
 echo -e "\e[31m::\e[0m Install Vim Plugins                       \e[31m::\e[0m"
