@@ -88,4 +88,19 @@ wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc
 #install Vim Plugins
 echo -e "\e[31m::\e[0m Install Vim Plugins                       \e[31m::\e[0m"
 setup_vim
+read -p "Do you want my hyprland config? ARCH ONLY\n $(echo $'\n yes \n no \n ')" choice
+if [[ $choice == "yes" ]]
+then
+    sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+    yay -Syu hyprland xdg-desktop-portal-hyprland sway swayidle wl-clipboard wireplumber slurp grim hyprpicker waybar-hyprland-git swaylock-effects --noconfirm
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/hyprland.conf --create-dirs -o ~/.config/hypr/hyprland.conf
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/swayidle/config --create-dirs -o ~/.config/swayidle/config
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/swaylock/config --create-dirs -o ~/.config/swaylock/config
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/waybar/config --create-dirs -o ~/.config/waybar/config
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/waybar/style.css --create-dirs -o ~/.config/waybar/style.css
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/bin/grimblast --create-dirs -o ~/.bin/grimblast
+else 
+    exit
+fi	
+
 echo -e "\e[31m::\e[0m Finished                                  \e[31m::\e[0m"

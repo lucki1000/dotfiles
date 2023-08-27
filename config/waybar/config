@@ -1,0 +1,71 @@
+{
+    "layer": "top",
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+    "modules-center": ["cpu","memory","hyprland/window", "tray"],
+    "modules-right": ["idle_inhibitor","network","network#wlan","wireplumber","clock"],
+    "hyprland/window": {
+        "max-length": 50
+    },
+    "clock": {
+        "format": "{:%H:%M:%S}",
+        "format-alt": "{:%a, %d. %b  %H:%M}",
+        "interval": 1
+    },
+    "hyprland/submap": {
+        "format": "✌️ {}",
+        "max-length": 8,
+        "tooltip": false
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        //"format-icons": ["", "", ""],
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["","", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "cpu": {
+        "format": "{usage}% "
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "network": {
+        "interface": "enp14s0",
+        "format": "{ifname}",
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "format-disconnected": "󰲛", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        //"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} connected ",
+        "tooltip-format-disconnected": "Ethernet disconnected",
+        "max-length": 50
+    },
+    "network#wlan": {
+        "interface": "wlan0",
+        "format": "{ifname}",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "󱚼", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Wlan disconnected 📵",
+        "max-length": 50
+    }
+}
