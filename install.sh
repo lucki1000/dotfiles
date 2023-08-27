@@ -88,8 +88,9 @@ wget -O ~/.vimrc https://raw.githubusercontent.com/lucki1000/dotfiles/main/vimrc
 #install Vim Plugins
 echo -e "\e[31m::\e[0m Install Vim Plugins                       \e[31m::\e[0m"
 setup_vim
+
 printf "Do you want my hyprland config? ARCH ONLY\nyes\nno\n"
-read  choice
+read  -r choice
 if [[ $choice == "yes" ]]
 then
     sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
