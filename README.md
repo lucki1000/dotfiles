@@ -2,5 +2,5 @@
 
 Install with this command:
 ```
-curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/install.sh | bash
+wget https://raw.githubusercontent.com/lucki1000/dotfiles/main/install.sh && chmod +x install.sh && ./install.sh && rm -rf ./install.sh
 ```
