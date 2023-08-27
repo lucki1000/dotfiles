@@ -18,7 +18,7 @@
     },
     "wireplumber": {
         "format": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": "",
         //"format-icons": ["", "", ""],
         "format-icons": {
             "headphones": "",
@@ -27,7 +27,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["","", ""]
+            "default": ["","", ""]
         },
         "on-click": "pavucontrol"
     },
@@ -47,11 +47,9 @@
     "network": {
         "interface": "enp14s0",
         "format": "{ifname}",
-        //"format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} 󰈀",
         "format-disconnected": "󰲛", //An empty format will hide the module.
         "tooltip-format": "{ifname} via {gwaddr} ",
-        //"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} connected ",
         "tooltip-format-disconnected": "Ethernet disconnected",
         "max-length": 50
@@ -65,7 +63,7 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Wlan disconnected 📵",
+        "tooltip-format-disconnected": "Wlan disconnected 󱚼",
         "max-length": 50
     }
 }

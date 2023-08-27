@@ -91,8 +91,8 @@ setup_vim
 read -p "Do you want my hyprland config? ARCH ONLY\n $(echo $'\n yes \n no \n ')" choice
 if [[ $choice == "yes" ]]
 then
-    sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-    yay -Syu hyprland xdg-desktop-portal-hyprland sway swayidle wl-clipboard wireplumber slurp grim hyprpicker waybar-hyprland-git swaylock-effects --noconfirm
+    sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+    yay -Syu nerd-fonts-meta hyprland xdg-desktop-portal-hyprland sway swayidle wl-clipboard wireplumber slurp grim hyprpicker waybar-hyprland-git swaylock-effects --noconfirm
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/hyprland.conf --create-dirs -o ~/.config/hypr/hyprland.conf
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/swayidle/config --create-dirs -o ~/.config/swayidle/config
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/swaylock/config --create-dirs -o ~/.config/swaylock/config
