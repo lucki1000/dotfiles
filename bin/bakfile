@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [[ "$1" = "-h" || "$1" = "--help" || "$1" = "help" ]] 
+then
+  echo -e "bakfile is a script to backup a file or folder into file.bak.\nIf you want to remove the bak extension of the file or folder\npass -u or --unbak, this process overwrite a file with the same name.\nExamples:\nbakfile file\nbakfile -u file.bak" 
+elif [[ "$1" = "-u" || "$1" = "--unbak" ]]
+then
+  if [[ "$2" = "-f" || "$2" = "--force" ]]
+  then
+    mv "$3" "${3%.bak}"
+  else
+    echo "$2 will be written to ${2%.bak}"
+    echo -e "Are you sure you want to continue?\n<y/N>" 
+    read -r prompt
+    if [[ $prompt =~ [yY](es)* ]]
+    then
+      mv "$2" "${2%.bak}"
+    fi
+  fi  
+else
+  cp -r "$1" "$1.bak"
+  echo -e "$1 was written to $1.bak"
+fi

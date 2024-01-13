@@ -93,14 +93,22 @@ printf "Do you want my hyprland config? ARCH ONLY\nyes\nno\n"
 read  -r choice
 if [[ $choice == "yes" ]]
 then
-    sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-    yay -Syu nerd-fonts-meta hyprland xdg-desktop-portal-hyprland sway swayidle wl-clipboard wireplumber slurp grim hyprpicker waybar-hyprland-git swaylock-effects --noconfirm
+    sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm
+    yay -Syu wlogout wofi we10x-icon-theme xcursor-arch-cursor-complete nerd-fonts-meta hyprland xdg-desktop-portal-hyprland sway swayidle wl-clipboard wireplumber slurp grim hyprpicker waybar-hyprland-git swaylock-effects qt5-wayland qt6-wayland polkit-kde-agent dunst copyq --noconfirm
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/hyprland.conf --create-dirs -o ~/.config/hypr/hyprland.conf
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/swayidle/config --create-dirs -o ~/.config/swayidle/config
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/swaylock/config --create-dirs -o ~/.config/swaylock/config
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/waybar/config --create-dirs -o ~/.config/waybar/config
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/waybar/style.css --create-dirs -o ~/.config/waybar/style.css
     curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/bin/grimblast --create-dirs -o ~/.bin/grimblast
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/wlogout/layout --create-dirs -o ~/.config/wlogout/layout
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/wlogout/style.css --create-dirs -o ~/.config/wlogout/style.css
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/wofi/config --create-dirs -o ~/.config/hypr/wofi/config
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/wofi/colors --create-dirs -o ~/.config/hypr/wofi/colors
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/wofi/style.css --create-dirs -o ~/.config/hypr/wofi/style.css
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/scripts/volume.sh --create-dirs -o ~/.config/hypr/scripts/volume.sh
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/hypr/scripts/wofi_menu.sh --create-dirs -o ~/.config/hypr/scripts/wofi_menu.sh
+    curl https://raw.githubusercontent.com/lucki1000/dotfiles/main/config/dunst/dunstrc --create-dirs -o ~/.config/dunst/dunstrc
 else 
     exit
 fi	

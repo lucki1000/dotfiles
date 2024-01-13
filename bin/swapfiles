@@ -1,0 +1,10 @@
+#!/bin/bash 
+
+if [[ "$1" = "-h" || "$1" = "--help" || "$1" = "help" ]]
+then
+  echo -e "swapfiles is a script to swap files.\nThe name for the content of two files get swaped.\nYou have to pass both file paths.\nExample:\nswapfiles file1 file2"
+else
+  mv "$1" "$1.bak"
+  mv "$2" "$1"
+  mv "$1.bak" "$2"
+fi

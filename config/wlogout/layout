@@ -1,0 +1,36 @@
+{
+    "label" : "sperren",
+    "action" : "swaylock",
+    "text" : "Sperren",
+    "keybind" : "l"
+}
+{
+    "label" : "ruhezustand",
+    "action" : "systemctl hibernate",
+    "text" : "Ruhezustand",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "loginctl kill-session $XDG_SESSION_ID",
+    "text" : "Logout",
+    "keybind" : "e"
+}
+{
+    "label" : "herunterfahren",
+    "action" : "systemctl poweroff",
+    "text" : "Herunterfahren",
+    "keybind" : "s"
+}
+{
+    "label" : "bereitschaft",
+    "action" : "systemctl suspend",
+    "text" : "Bereitschaft",
+    "keybind" : "u"
+}
+{
+    "label" : "neustart",
+    "action" : "systemctl reboot",
+    "text" : "Neustart",
+    "keybind" : "r"
+}

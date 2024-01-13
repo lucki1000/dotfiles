@@ -1,69 +1,139 @@
 {
-    "layer": "top",
-    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-    "modules-center": ["cpu","memory","hyprland/window", "tray"],
-    "modules-right": ["idle_inhibitor","network","network#wlan","wireplumber","clock"],
-    "hyprland/window": {
-        "max-length": 50
-    },
-    "clock": {
-        "format": "{:%H:%M:%S}",
-        "format-alt": "{:%a, %d. %b  %H:%M}",
-        "interval": 1
-    },
-    "hyprland/submap": {
-        "format": "✌️ {}",
-        "max-length": 8,
-        "tooltip": false
-    },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
-        "format-muted": "",
-        //"format-icons": ["", "", ""],
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["","", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "cpu": {
-        "format": "{usage}% "
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "network": {
-        "interface": "enp14s0",
-        "format": "{ifname}",
-        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
-        "format-disconnected": "󰲛", //An empty format will hide the module.
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format-ethernet": "{ifname} connected ",
-        "tooltip-format-disconnected": "Ethernet disconnected",
-        "max-length": 50
-    },
-    "network#wlan": {
-        "interface": "wlan0",
-        "format": "{ifname}",
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "format-disconnected": "󱚼", //An empty format will hide the module.
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Wlan disconnected 󱚼",
-        "max-length": 50
-    }
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "spacing": 4,
+  "margin-top": 0,
+  "margin-bottom": 0,
+
+  // Choose the order of the modules
+
+  "modules-center": ["custom/media", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "hyprland/language", "battery", "battery#bat2",  "tray"],
+  "modules-left": ["custom/launcher", "hyprland/workspaces"],
+  "modules-right":["clock",  "custom/power"],
+
+  // Modules configuration
+
+   "hyprland/workspaces": {
+       "disable-scroll": true,
+       "all-outputs": false,
+       "format": "{name}"
+  },
+  "sway/mode": {
+      "format": "<span style=\"italic\">{}</span>"
+  },
+  "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+          "activated": "",
+          "deactivated": ""
+      }
+  },
+  "tray": {
+      "icon-size": 20,
+      "spacing": 10
+  },
+  "clock": {
+      "interval": 1,
+      "format": "{:%H:%M:%S}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+      "format-alt": "{:%H:%M:%S :%d.%m.%Y}"
+  },
+  "cpu": {
+      "format": "{usage}% ",
+      "tooltip": true
+  },
+  "memory": {
+      "format": "{}% "
+  },
+  "temperature": {
+      // "thermal-zone": 2,
+      // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+      "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C {icon}",
+      "format": "{temperatureC}°C {icon}",
+      "format-icons": ["", "", ""]
+  },
+  "backlight": {
+      // "device": "acpi_video1",
+      "format": "{percent}% {icon}",
+      "format-icons": ["", ""]
+  },
+  "battery": {
+      "states": {
+          // "good": 95,
+          "warning": 30,
+          "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-alt": "{time} {icon}",
+      // "format-good": "", // An empty format will hide the module
+      // "format-full": "",
+      "format-icons": ["", "", "", "", ""]
+  },
+  "battery#bat2": {
+      "bat": "BAT2"
+  },
+  "network": {
+      // "interface": "wlp2*", // (Optional) To force the use of this interface
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "Connected  ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      "on-click-right": "bash ~/.config/hypr/wofi/wifi"
+  },
+  "pulseaudio": {
+      // "scroll-step": 1, // %, can be a float
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon}",
+      "format-bluetooth-muted": "{icon} {format_source}",
+      "format-muted": "{format_source}",
+      "format-source": "",
+      "format-source-muted": "",
+      "format-icons": {
+          "headphone": "",
+          "hands-free": "",
+          "headset": "",
+          "phone": "",
+          "portable": "",
+          "car": "",
+          "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol",
+      "on-scroll-up": "~/.config/hypr/scripts/volume.sh 5%+",
+      "on-scroll-down": "~/.config/hypr/scripts/volume.sh 5%-"
+  },
+  "custom/media": {
+      "format": "{icon} {}",
+      "return-type": "json",
+      "max-length": 25,
+      "format-icons": {
+          "spotify": " ",
+          "default": " "
+      },
+      "escape": true,
+      "exec": "$HOME/.config/system_scripts/mediaplayer.py 2> /dev/null",
+      "on-click": "playerctl play-pause"
+  },
+  "custom/launcher":{
+      "format": " ",
+      "on-click": "~/.config/hypr/scripts/wofi_menu.sh",
+      "on-click-right": "killall wofi"
+  },
+  "custom/power":{
+      "format": " ",
+      "on-click": "wlogout",
+      "on-click-right": "killall wofi"
+  },
+  "custom/updater":{
+      "format": "  {} Updates",
+      "exec": "yay -Qu | wc -l",
+      "exec-if": "[[ $(yay -Qu | wc -l) != 0 ]]",
+      "interval": 900,
+      "on-click": "kitty --class \"updater\" --title \"System Update\" yay -Syu"
+  }
 }
